@@ -78,23 +78,26 @@ export default function ProfileDetail({ subscribers, selectedId, onSelect, onBac
 }
 
 // ---------- ProfileHeader ----------
-// Two trust toggles, collapsed by default. Order matters: auto-append is the
-// lower-risk, structured-data step (Shopify writes you'd usually approve
-// anyway), so it sits on top of the trust ladder. Auto-apply inferences is the
-// riskier AI judgment step, placed beneath. Merchants typically flip append
-// on first. Collapsed header surfaces the current state via a chip so you can
-// scan it without expanding.
+// Three trust toggles, collapsed by default. Order matters and follows a trust
+// ladder: auto-append (low-risk, structured Shopify data) → auto-apply
+// inferences (higher-risk AI judgment) → sync writes to Shopify (highest-risk:
+// touches data other systems read). Append + infer share an axis (review vs
+// auto), and a thin divider separates them from the writeback toggle, which
+// governs a different axis (whether approved writes flow back to Shopify).
+// Merchants typically flip append on first. Collapsed header surfaces the
+// current state via a chip so you can scan it without expanding.
 function ProfileHeader({ subscriber }) {
   const [autoAppend, setAutoAppend] = useState(subscriber.autoAppendShopify ?? false);
   const [autoApply, setAutoApply] = useState(subscriber.autoApplyInfer);
+  const [autoWriteback, setAutoWriteback] = useState(subscriber.autoWritebackShopify ?? false);
   const [expanded, setExpanded] = useState(false);
 
-  const onCount = (autoAppend ? 1 : 0) + (autoApply ? 1 : 0);
+  const onCount = (autoAppend ? 1 : 0) + (autoApply ? 1 : 0) + (autoWriteback ? 1 : 0);
   const summaryLabel =
     onCount === 0 ? "Manual review" :
-    onCount === 2 ? "Append + Infer on" :
-    autoAppend     ? "Append on" :
-                     "Infer on";
+    onCount === 1 ? "1 rule active" :
+    onCount === 2 ? "2 rules active" :
+                    "All rules active";
   const summaryTone = onCount === 0 ? "default" : "brand";
 
   return (
@@ -161,6 +164,13 @@ function ProfileHeader({ subscriber }) {
                 onChange={setAutoApply}
                 label="Auto-apply inferences"
                 hint="Top-ranked inferences ≥ 0.85 confidence apply without review."
+              />
+              <div className="border-t border-[color:var(--color-line)]" />
+              <Toggle
+                checked={autoWriteback}
+                onChange={setAutoWriteback}
+                label="Sync writes to Shopify"
+                hint="Approved writes also flow back to your Shopify customer object."
               />
             </div>
           )}

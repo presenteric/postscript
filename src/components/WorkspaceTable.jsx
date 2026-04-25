@@ -208,10 +208,11 @@ export default function WorkspaceTable({ subscribers, onSelectSubscriber, lastRe
                       <div className="min-w-0">
                         <div className="text-[13px] font-semibold text-[color:var(--color-brand)]">{s.name}</div>
                         <div className="text-[11px] text-[color:var(--color-ink-subtle)] metric">{s.phone}</div>
-                        {(s.autoAppendShopify || s.autoApplyInfer) && (
+                        {(s.autoAppendShopify || s.autoApplyInfer || s.autoWritebackShopify) && (
                           <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
                             {s.autoAppendShopify && <Chip tone="default">auto append</Chip>}
                             {s.autoApplyInfer && <Chip tone="brand">auto infer</Chip>}
+                            {s.autoWritebackShopify && <Chip tone="info">auto write</Chip>}
                           </div>
                         )}
                       </div>

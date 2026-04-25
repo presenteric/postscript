@@ -38,6 +38,7 @@ export const subscribers = [
     shopperEngagement: { count: 1, windowDays: 30, label: "1 conv. · 30d" },
     autoApplyInfer: false,
     autoAppendShopify: false,
+    autoWritebackShopify: false,
     scenarioLabel: "Fresh opt-in, cold profile",
 
     profile: {
@@ -114,6 +115,7 @@ export const subscribers = [
     shopperEngagement: { count: 4, windowDays: 30, label: "4 conv. · 30d" },
     autoApplyInfer: false,
     autoAppendShopify: false,
+    autoWritebackShopify: false,
     scenarioLabel: "High-confidence stack, ready to approve",
 
     profile: {
@@ -201,6 +203,7 @@ export const subscribers = [
     shopperEngagement: { count: 2, windowDays: 30, label: "2 conv. · 30d" },
     autoApplyInfer: false,
     autoAppendShopify: false,
+    autoWritebackShopify: false,
     scenarioLabel: "Gifting signals, low confidence — recommend ask",
 
     profile: {
@@ -265,6 +268,7 @@ export const subscribers = [
     shopperEngagement: { count: 9, windowDays: 30, label: "9 conv. · 30d" },
     autoApplyInfer: true,
     autoAppendShopify: true,
+    autoWritebackShopify: true,
     scenarioLabel: "Returning buyer, auto-apply on",
 
     profile: {
@@ -332,6 +336,7 @@ export const subscribers = [
     shopperEngagement: { count: 0, windowDays: 30, label: "no Shopper history" },
     autoApplyInfer: false,
     autoAppendShopify: false,
+    autoWritebackShopify: false,
     scenarioLabel: "Stale profile, drifting toward unsub",
 
     profile: {
@@ -397,6 +402,7 @@ export const subscribers = [
     shopperEngagement: { count: 0, windowDays: 30, label: "no Shopper history" },
     autoApplyInfer: false,
     autoAppendShopify: false,
+    autoWritebackShopify: false,
     scenarioLabel: "Shopify data ready to append",
 
     profile: {
