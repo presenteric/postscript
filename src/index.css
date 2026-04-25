@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* Canvas & surfaces — cool neutral grays, matches the live Postscript app */
+  --color-canvas: #f4f4f7;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7f6fb;
+  --color-row-alt: #faf9fc;
+
+  /* Ink */
+  --color-ink: #111114;
+  --color-ink-muted: #5b5b66;
+  --color-ink-subtle: #9a9aa6;
+
+  /* Lines */
+  --color-line: #ececf1;
+  --color-line-strong: #d8d8e0;
+
+  /* Brand (Postscript purple) */
+  --color-brand: #5d3ad8;
+  --color-brand-hover: #4d2dc4;
+  --color-brand-bg: #efeafe;
+  --color-brand-bg-strong: #e3dafd;
+
+  /* Semantic — pastel-adjacent */
+  --color-ok: #2d7a4f;
+  --color-ok-bg: #e8f4ec;
+  --color-warn: #9a6b00;
+  --color-warn-bg: #fcf3d9;
+  --color-error: #b03838;
+  --color-error-bg: #fae8e8;
+  --color-info: #2a6b8a;
+  --color-info-bg: #e3eef4;
+
+  /* Type */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html, body, #root {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tabular numerals for any metric-bearing element */
+.metric, .tabular {
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  font-variant-numeric: tabular-nums lining-nums;
+}
